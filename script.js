@@ -3,6 +3,7 @@ var generateBtn = document.querySelector("#generate");
 var arr = [];
 var lngth;
 
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword(arr);
@@ -43,7 +44,7 @@ function generatePassword(arr){
   
   
     //create for loop to generate characters for password
-    for (let i=0; i < lngth; i++){
+    for (let i=1; i <= lngth; i++){
        //if lowerCase is true generate characters and push into string
        if (lowerCase){
           arr.push(String.fromCharCode(Math.floor(Math.random()*26)+97));
@@ -61,16 +62,19 @@ function generatePassword(arr){
         if (numbr){
           arr.push(String.fromCharCode(Math.floor(Math.random()*9)+48));
           }
-    //return arr with wanted length and remove commas from array
-    }return arr.splice(0, lngth).join('');
+    //return arr with wanted length,
+    //sort to shuffle the array by random,
+    //andjoin to remove commas from array
+    }return arr.splice(0, lngth).sort(function(){return 0.5 - Math.random()}).join('');
 
-    
   //alert length requirments if not met
   }else {
     alert("Please enter a number between 8 and 128.");
     console.log("peramiters not met");
   }
+  
 }
+
 
 
 
